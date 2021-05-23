@@ -16,3 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+/*
+|--------------------------------------------------------------------------
+| User Routes
+|--------------------------------------------------------------------------
+*/
+// Get all users and return a list view
+Route::get('users/list_view', [\App\Http\Controllers\UsersController::class, 'users_list_view'])->name('users_list_view');

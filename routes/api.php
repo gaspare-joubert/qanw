@@ -18,4 +18,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+// Call to test Api fetches users and albums and updates database records.
 Route::get('api', [\App\Http\Controllers\ApiController::class, '__invoke'])->name('api');
