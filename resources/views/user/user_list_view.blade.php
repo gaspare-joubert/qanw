@@ -49,7 +49,7 @@
                                         @endif
                                     @endforeach
                                     <td>
-                                        <a href="{{route('user_edit_view', $row['id'])}}" class="underline text-gray-900 dark:text-white">Edit</a>
+                                        <a href="{{route('user_edit_view', ['id' => $row['id']])}}" class="underline text-gray-900 dark:text-white">Edit</a>
                                     </td>
                                 </tr>
                             @endforeach
