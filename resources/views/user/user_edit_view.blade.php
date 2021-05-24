@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Q.A.N.W. | Users List View</title>
+    <title>Q.A.N.W. | User Edit View</title>
 <!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="../../images/icons/favicon.ico"/>
 <!--===============================================================================================-->
@@ -49,7 +49,7 @@
                                         @endif
                                     @endforeach
                                     <td>
-                                        <a href="{{route('user_edit_view', $row['id'])}}" class="underline text-gray-900 dark:text-white">Edit</a>
+                                        <a href="" class="underline text-gray-900 dark:text-white">Edit</a>
                                     </td>
                                 </tr>
                             @endforeach

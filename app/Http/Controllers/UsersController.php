@@ -42,4 +42,18 @@ class UsersController extends Controller
 
         return view('user/user_list_view', ['data' => $data]);
     }
+
+    // return the edit view for the selected user by id
+
+    /**
+     * FunctionDescription
+     *
+     * @param string $id
+     * @return Application|Factory|View
+     */
+    public function user_edit_view (string $id)
+    {
+        $test = '';
+        return view('user/user_edit_view');
+    }
 }
