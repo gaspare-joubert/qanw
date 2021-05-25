@@ -29,31 +29,34 @@
 		<div class="container-table100">
 			<div class="wrap-table100">
                 <div class="html h3" data-column="column1">
-                    List of all users
+                    Edit user no #???
                 </div>
 				<div class="table100 ver1 m-b-110">
 					<table data-vertable="ver1">
 						<thead>
 							<tr class="row100 head">
-                                @foreach($data['headers'] as $header)
-                                    <th id="{{ $header }}" class="column100 column1" data-column="column1">{{ $header }}</th>
-                                @endforeach
-                                <th id="edit" class="column100 column1" data-column="column1">Edit</th>
+                                <th id="1column" class="column100 column2" data-column="column2">1column</th>
+                                <th id="2column" class="column100 column2" data-column="column2">2column</th>
+                                <th id="3column" class="column100 column2" data-column="column2">3column</th>
+                                <th id="4column" class="column100 column2" data-column="column2">4column</th>
 							</tr>
 						</thead>
 						<tbody>
-                            @foreach($data['rows'] as $row)
-                                <tr id="{{ $row['id'] }}">
-                                    @foreach($row as $key => $value)
-                                        @if($key !== 'created_at' && $key !== 'updated_at')
-                                            <td>{{ $value }}</td>
-                                        @endif
-                                    @endforeach
-                                    <td>
-                                        <a href="" class="underline text-gray-900 dark:text-white">Edit</a>
-                                    </td>
-                                </tr>
-                            @endforeach
+                        <tr class="row100">
+                            <td class="column100 column2" data-column="column2">label</td>
+                            <td class="column100 column2" data-column="column2">change this to input</td>
+                            <td class="column100 column2" data-column="column2">label</td>
+                            <td class="column100 column2" data-column="column2">change this to input</td>
+                        </tr>
+                        <tr class="row100">
+                            <td class="column100 column2" data-column="column2">label</td>
+                            <td class="column100 column2" data-column="column2">change this to input</td>
+                            <td class="column100 column2" data-column="column2">label</td>
+                            <td class="column100 column2" data-column="column2">change this to input</td>
+                        </tr>
+                        <tr class="row100">
+                            <td class="column100 column2" data-column="column2">submit</td>
+                        </tr>
 						</tbody>
 					</table>
 				</div>

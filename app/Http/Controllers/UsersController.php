@@ -53,7 +53,6 @@ class UsersController extends Controller
      */
     public function user_edit_view (string $id)
     {
-        $test = '';
         return view('user/user_edit_view');
     }
 }
