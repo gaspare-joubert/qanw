@@ -30,6 +30,11 @@
 			<div class="wrap-table100">
                 <div class="html h3" data-column="column1">
                     List of all users
+                    @if (session('status'))
+                        <div class="alert alert-danger">
+                            {{ session('status') }}
+                        </div>
+                    @endif
                 </div>
 				<div class="table100 ver1 m-b-110">
 					<table data-vertable="ver1">

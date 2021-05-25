@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUserRequest;
 use App\Models\User;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Redirect;
 
 use function React\Promise\all;
 
@@ -43,16 +46,51 @@ class UsersController extends Controller
         return view('user/user_list_view', ['data' => $data]);
     }
 
-    // return the edit view for the selected user by id
-
     /**
-     * FunctionDescription
+     * Get the selected user data and return the user edit view.
      *
      * @param string $id
      * @return Application|Factory|View
      */
-    public function user_edit_view (string $id)
+    public function user_edit_view(string $id)
     {
-        return view('user/user_edit_view');
+        $user = User::whereId($id)->first();
+
+        if ($user) {
+            $attributes = $user->getAttributes();
+
+            if ($attributes) {
+                $name = $attributes['name'];
+                $email = $attributes['email'];
+
+                return view(
+                    'user/user_edit_view',
+                    [
+                        'userId' => $id,
+                        'userName' => $name,
+                        'email' => $email,
+                    ]
+                );
+            }
+
+            Log::error("Unable to retrieve user $id attributes.");
+
+            return Redirect::back()->with('status', 'Error. User details not found.');
+        }
+
+        Log::error("Unable to retrieve user $id details.");
+
+        return Redirect::back()->with('status', 'Error. User details not found.');
+    }
+
+    /**
+     * FunctionDescription
+     *
+     * @param StoreUserRequest $StoreUserRequest
+     * @param Request $request
+     */
+    public function userStore(StoreUserRequest $StoreUserRequest, Request $request)
+    {
+        $test = '';
     }
 }

@@ -27,38 +27,29 @@
 
 	<div class="limiter">
 		<div class="container-table100">
-			<div class="wrap-table100">
+			<div class="wrap-table100" style="width: 500px; margin: auto;">
                 <div class="html h3" data-column="column1">
-                    Edit user no #???
+                    Edit User Details
                 </div>
 				<div class="table100 ver1 m-b-110">
-					<table data-vertable="ver1">
-						<thead>
-							<tr class="row100 head">
-                                <th id="1column" class="column100 column2" data-column="column2">1column</th>
-                                <th id="2column" class="column100 column2" data-column="column2">2column</th>
-                                <th id="3column" class="column100 column2" data-column="column2">3column</th>
-                                <th id="4column" class="column100 column2" data-column="column2">4column</th>
-							</tr>
-						</thead>
-						<tbody>
-                        <tr class="row100">
-                            <td class="column100 column2" data-column="column2">label</td>
-                            <td class="column100 column2" data-column="column2">change this to input</td>
-                            <td class="column100 column2" data-column="column2">label</td>
-                            <td class="column100 column2" data-column="column2">change this to input</td>
-                        </tr>
-                        <tr class="row100">
-                            <td class="column100 column2" data-column="column2">label</td>
-                            <td class="column100 column2" data-column="column2">change this to input</td>
-                            <td class="column100 column2" data-column="column2">label</td>
-                            <td class="column100 column2" data-column="column2">change this to input</td>
-                        </tr>
-                        <tr class="row100">
-                            <td class="column100 column2" data-column="column2">submit</td>
-                        </tr>
-						</tbody>
-					</table>
+                    <form method="post" action="{{ route('user_store') }}">
+                        <input type="hidden" id="userId" name="userId" value="{{ $userId }}">
+                        <div class="form-group">
+                            <label for="userName">Name</label>
+                            <input type="text" class="form-control" id="userName" name="userName" value="{{ old('userName', $userName) }}">
+                            @error('userName')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-Mail</label>
+                            <input type="email" class="form-control" id="email" name="email" value="{{ old('email', $email) }}">
+                            @error('email')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </form>
 				</div>
                 <div class="html h6" data-column="column1" style="text-align: center">
                     Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
