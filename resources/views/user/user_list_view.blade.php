@@ -60,7 +60,7 @@
                                         @endif
                                     @endforeach
                                     <td>
-                                        <a href="{{route('user_edit_view', ['id' => $row['id']])}}" class="underline text-gray-900 dark:text-white">Edit</a>
+                                        <a href="{{route('user_edit_view', ['id' => $row['id']])}}" class="text-gray-900 dark:text-white"><img border="0" alt="" src="{{asset('vendor/images/icons/edit.png')}}" width="20" height="20"></a>
                                     </td>
                                 </tr>
                             @endforeach
