@@ -8,6 +8,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
@@ -25,7 +26,7 @@ class UsersController extends Controller
      *
      * @return Application|Factory|View
      */
-    public function users_list_view()
+    public function usersListView()
     {
         $userMetadata = new User();
         $data = array();
@@ -50,9 +51,9 @@ class UsersController extends Controller
      * Get the selected user data and return the user edit view.
      *
      * @param string $id
-     * @return Application|Factory|View
+     * @return Application|Factory|View|RedirectResponse
      */
-    public function user_edit_view(string $id)
+    public function userEditView(string $id)
     {
         $user = User::whereId($id)->first();
 
@@ -84,13 +85,38 @@ class UsersController extends Controller
     }
 
     /**
-     * FunctionDescription
+     * Validate request and store user details.
      *
-     * @param StoreUserRequest $StoreUserRequest
-     * @param Request $request
+     * @param StoreUserRequest $request
+     * @return RedirectResponse
      */
-    public function userStore(StoreUserRequest $StoreUserRequest, Request $request)
+    public function userStore(StoreUserRequest $request)
     {
-        $test = '';
+        if ($request->validated()) {
+            try {
+                $user = User::whereId($request->userId)->first();
+                $this->defineUserFieldsToUpdate($user, $request);
+                $user->save();
+
+                return redirect()->route('users_list_view')->with('success', 'User details have been updated.');
+            } catch (\Exception $ex) {
+                Log::error($ex->getMessage());
+
+                return redirect()->route('users_list_view')->with('status', 'Error. User details have not updated.');
+            }
+        }
+    }
+
+    /**
+     * Define the user fields to store or update.
+     *
+     * @param User $user
+     * @param StoreUserRequest $request
+     * @return void
+     */
+    private function defineUserFieldsToUpdate(User $user, StoreUserRequest $request): void
+    {
+        $user->name = $request->userName;
+        $user->email = $request->email;
     }
 }

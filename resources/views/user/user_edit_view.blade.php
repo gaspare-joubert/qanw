@@ -33,6 +33,7 @@
                 </div>
 				<div class="table100 ver1 m-b-110">
                     <form method="post" action="{{ route('user_store') }}">
+                        @csrf
                         <input type="hidden" id="userId" name="userId" value="{{ $userId }}">
                         <div class="form-group">
                             <label for="userName">Name</label>
