@@ -30,6 +30,11 @@
         <div class="wrap-table100" style="width: 500px; margin: auto;">
             <div class="html h3" data-column="column1">
                 Select from these options:
+                @if (session('status'))
+                    <div class="alert alert-danger">
+                        {{ session('status') }}
+                    </div>
+                @endif
             </div>
             <div class="table100 ver1 m-b-110">
                 <table data-vertable="ver1">
@@ -47,9 +52,15 @@
                             </td>
                         </tr>
                         <tr id="2row" class="border border-dark">
-                            <td>View a list of all users. Use the edit button to edit the user's details.</td>
+                            <td>View a list of all users. Use the edit button in the list view to edit the user's details.</td>
                             <td>
                                 <a href="{{route('users_list_view')}}" class="text-gray-900 dark:text-white"><img border="0" alt="" src="{{asset('vendor/images/icons/select.png')}}" width="30" height="30"></a>
+                            </td>
+                        </tr>
+                        <tr id="3row" class="border border-dark">
+                            <td>View a list of all albums.</td>
+                            <td>
+                                <a href="{{route('albums_list_view')}}" class="text-gray-900 dark:text-white"><img border="0" alt="" src="{{asset('vendor/images/icons/select.png')}}" width="30" height="30"></a>
                             </td>
                         </tr>
                     </tbody>

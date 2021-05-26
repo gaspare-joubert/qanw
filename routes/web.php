@@ -28,3 +28,11 @@ Route::get('users/list_view', [\App\Http\Controllers\UsersController::class, 'us
 Route::get('user/edit_view/{id}', [\App\Http\Controllers\UsersController::class, 'userEditView'])->name('user_edit_view');
 // Store the changes made to the user
 Route::post('/user/store', [\App\Http\Controllers\UsersController::class, 'userStore'])->name('user_store');
+
+/*
+|--------------------------------------------------------------------------
+| Album Routes
+|--------------------------------------------------------------------------
+*/
+// Get all albums and return a list view
+Route::get('albums/list_view', [\App\Http\Controllers\AlbumsController::class, 'albumsListView'])->name('albums_list_view');

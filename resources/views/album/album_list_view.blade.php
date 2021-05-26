@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" style="width:2050px;">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" style="margin: auto;">
 <head>
     <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,11 +25,10 @@
 </head>
 <body>
 
-	<div class="limiter">
-		<div class="container-table100">
-			<div class="wrap-table100">
+	<div class="limiter" style="margin: auto;">
+		<div class="container-table100" style="margin: auto;">
+			<div class="wrap-table100" style="width:700px; margin: auto;">
                 <div class="html h3" data-column="column1">
-                    List of all users
                     @if (session('status'))
                         <div class="alert alert-danger">
                             {{ session('status') }}
@@ -40,6 +39,7 @@
                             {{ session('success') }}
                         </div>
                     @endif
+                    List of all albums
                 </div>
 				<div class="table100 ver1 m-b-110">
 					<table data-vertable="ver1">
@@ -48,24 +48,20 @@
                                 @foreach($data['headers'] as $header)
                                     <th id="{{ $header }}" class="column100 column1" data-column="column1">{{ $header }}</th>
                                 @endforeach
-                                <th id="edit" class="column100 column1" data-column="column1">Edit</th>
 							</tr>
 						</thead>
 						<tbody>
-                            @foreach($data['rows'] as $row)
-                                <tr id="{{ $row['id'] }}">
-                                    @foreach($row as $key => $value)
-                                        @if($key !== 'created_at' && $key !== 'updated_at')
-                                            <td>{{ $value }}</td>
-                                        @endif
-                                    @endforeach
-                                    <td>
-                                        <a href="{{route('user_edit_view', ['id' => $row['id']])}}" class="text-gray-900 dark:text-white"><img border="0" alt="" src="{{asset('vendor/images/icons/edit.png')}}" width="20" height="20"></a>
-                                    </td>
+                            @foreach($albums as $album)
+                                <tr id="{{ $album->id }}" class="border border-dark">
+                                    <td>{{ $album->id }}</td>
+                                    <td>{{ $album->title }}</td>
                                 </tr>
                             @endforeach
 						</tbody>
 					</table>
+                    <div style="margin-left:200px;">
+                        {{ $albums->links() }}
+                    </div>
 				</div>
                 <div class="html h6" data-column="column1" style="text-align: center">
                     Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
