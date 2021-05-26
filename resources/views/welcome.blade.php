@@ -27,33 +27,31 @@
 
 <div class="limiter">
     <div class="container-table100">
-        <div class="wrap-table100">
-            <div class="html h3" data-column="column1" style="text-align: center">
-                Make a selection
+        <div class="wrap-table100" style="width: 500px; margin: auto;">
+            <div class="html h3" data-column="column1">
+                Select from these options:
             </div>
             <div class="table100 ver1 m-b-110">
-                <table data-vertable="ver1" style="width: 500px; margin: auto;">
+                <table data-vertable="ver1">
                     <thead>
                     <tr class="row100 head">
-                        <th class="column100 column1" data-column="column1"></th>
-                        <th class="column100 column2" data-column="column2"></th>
+                        <th id="1column" class="column100 column1" data-column="column2"></th>
+                        <th id="2column" class="column100 column2" data-column="column2"></th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr class="row100">
-                        <td class="column100 column1" data-column="column1">Fetch the user and album data using an api call and update the database records.</td>
-                        <td class="column100 column2" data-column="column2"><a href="{{ route('api') }}" class="underline text-gray-900 dark:text-white">Fetch Data</a></td>
-                    </tr>
-
-                    <tr class="row100">
-                        <td class="column100 column1" data-column="column1">View a list of all users. Use the edit button to edit the user's details.</td>
-                        <td class="column100 column2" data-column="column2"><a href="{{ route('users_list_view') }}" class="underline text-gray-900 dark:text-white">List All Users</a></td>
-                    </tr>
-
-                    <tr class="row100">
-                        <td class="column100 column1" data-column="column1">List all albums.</td>
-                        <td class="column100 column2" data-column="column2"></td>
-                    </tr>
+                        <tr id="1row" class="border border-dark">
+                            <td>Fetch the user and album data using an api call and update the database records.</td>
+                            <td>
+                                <a href="{{route('api')}}" class="text-gray-900 dark:text-white"><img border="0" alt="" src="{{asset('vendor/images/icons/select.png')}}" width="30" height="30"></a>
+                            </td>
+                        </tr>
+                        <tr id="2row" class="border border-dark">
+                            <td>View a list of all users. Use the edit button to edit the user's details.</td>
+                            <td>
+                                <a href="{{route('users_list_view')}}" class="text-gray-900 dark:text-white"><img border="0" alt="" src="{{asset('vendor/images/icons/select.png')}}" width="30" height="30"></a>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -68,7 +66,7 @@
 
 
 <!--===============================================================================================-->
-<script src="{{asset('vendor/jquery/jquery-3.2.1.min.js')}}"></script>
+{{--<script src="{{asset('vendor/jquery/jquery-3.2.1.min.js')}}"></script>--}}
 <!--===============================================================================================-->
 <script src="{{asset('vendor/bootstrap/js/popper.js')}}"></script>
 <script src="{{asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script>
