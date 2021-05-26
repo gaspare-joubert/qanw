@@ -46,7 +46,7 @@
                     </tr>
 
                     <tr class="row100">
-                        <td class="column100 column1" data-column="column1">List all users.</td>
+                        <td class="column100 column1" data-column="column1">View a list of all users. Use the edit button to edit the user's details.</td>
                         <td class="column100 column2" data-column="column2"><a href="{{ route('users_list_view') }}" class="underline text-gray-900 dark:text-white">List All Users</a></td>
                     </tr>
 
