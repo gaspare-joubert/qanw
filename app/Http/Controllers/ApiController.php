@@ -37,8 +37,8 @@ class ApiController extends Controller
 
     public function __invoke()
     {
-        $usersProcess = new UsersProcess();
-        $albumsProcess = new AlbumsProcess();
+        new UsersProcess();
+        new AlbumsProcess();
 
         return $this->returnView();
     }

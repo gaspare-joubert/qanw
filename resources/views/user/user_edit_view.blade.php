@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" style="width:2050px;">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Q.A.N.W. | Users List View</title>
+    <title>Q.A.N.W. | User Edit View</title>
 
     <!--===============================================================================================-->
     <link rel="icon" type="image/png" href="{{asset('vendor/images/icons/favicon.ico')}}"/>
@@ -27,45 +27,30 @@
 
 	<div class="limiter">
 		<div class="container-table100">
-			<div class="wrap-table100">
+			<div class="wrap-table100" style="width: 500px; margin: auto;">
                 <div class="html h3" data-column="column1">
-                    List of all users
-                    @if (session('status'))
-                        <div class="alert alert-danger">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-                    @if (session('success'))
-                        <div class="alert alert-success">
-                            {{ session('success') }}
-                        </div>
-                    @endif
+                    Edit User Details
                 </div>
 				<div class="table100 ver1 m-b-110">
-					<table data-vertable="ver1">
-						<thead>
-							<tr class="row100 head">
-                                @foreach($data['headers'] as $header)
-                                    <th id="{{ $header }}" class="column100 column1" data-column="column1">{{ $header }}</th>
-                                @endforeach
-                                <th id="edit" class="column100 column1" data-column="column1">Edit</th>
-							</tr>
-						</thead>
-						<tbody>
-                            @foreach($data['rows'] as $row)
-                                <tr id="{{ $row['id'] }}">
-                                    @foreach($row as $key => $value)
-                                        @if($key !== 'created_at' && $key !== 'updated_at')
-                                            <td>{{ $value }}</td>
-                                        @endif
-                                    @endforeach
-                                    <td>
-                                        <a href="{{route('user_edit_view', ['id' => $row['id']])}}" class="underline text-gray-900 dark:text-white">Edit</a>
-                                    </td>
-                                </tr>
-                            @endforeach
-						</tbody>
-					</table>
+                    <form method="post" action="{{ route('user_store') }}">
+                        @csrf
+                        <input type="hidden" id="userId" name="userId" value="{{ $userId }}">
+                        <div class="form-group">
+                            <label for="userName">Name</label>
+                            <input type="text" class="form-control" id="userName" name="userName" value="{{ old('userName', $userName) }}">
+                            @error('userName')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-Mail</label>
+                            <input type="email" class="form-control" id="email" name="email" value="{{ old('email', $email) }}">
+                            @error('email')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </form>
 				</div>
                 <div class="html h6" data-column="column1" style="text-align: center">
                     Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
